@@ -1,0 +1,72 @@
+@file:Suppress("NOTHING_TO_INLINE")
+@file:JvmSynthetic
+package org.joml
+
+import org.joml.Angled.Companion.radians
+import java.nio.ByteBuffer
+import java.nio.DoubleBuffer
+
+/* Operators */
+public inline operator fun Vector4dc.component1(): Double = x()
+public inline operator fun Vector4dc.component2(): Double = y()
+public inline operator fun Vector4dc.component3(): Double = z()
+public inline operator fun Vector4dc.component4(): Double = w()
+public inline operator fun Vector4dc.plus(v: Vector4dc): Vector4d = add(v, Vector4d())
+public inline operator fun Vector4dc.plus(v: Vector4fc): Vector4d = add(v, Vector4d())
+public inline operator fun Vector4d.plusAssign(v: Vector4dc) { add(v) }
+public inline operator fun Vector4d.plusAssign(v: Vector4fc) { add(v) }
+public inline operator fun Vector4dc.minus(v: Vector4dc): Vector4d = sub(v, Vector4d())
+public inline operator fun Vector4dc.minus(v: Vector4fc): Vector4d = sub(v, Vector4d())
+public inline operator fun Vector4d.minusAssign(v: Vector4dc) { sub(v) }
+public inline operator fun Vector4d.minusAssign(v: Vector4fc) { sub(v) }
+public inline operator fun Vector4dc.times(v: Vector4dc): Vector4d = mul(v, Vector4d())
+public inline operator fun Vector4dc.times(v: Vector4fc): Vector4d = mul(v, Vector4d())
+public inline operator fun Vector4dc.times(s: Double): Vector4d = mul(s, Vector4d())
+public inline operator fun Vector4dc.times(m: Matrix4dc): Vector4d = mul(m, Vector4d())
+public inline operator fun Vector4dc.times(m: Matrix4x3dc): Vector4d = mul(m, Vector4d())
+public inline operator fun Vector4dc.times(m: Matrix4fc): Vector4d = mul(m, Vector4d())
+public inline operator fun Vector4dc.times(m: Matrix4x3fc): Vector4d = mul(m, Vector4d())
+public inline operator fun Vector4d.timesAssign(v: Vector4dc) { mul(v) }
+public inline operator fun Vector4d.timesAssign(v: Vector4fc) { mul(v) }
+public inline operator fun Vector4d.timesAssign(s: Double) { mul(s) }
+public inline operator fun Vector4d.timesAssign(m: Matrix4dc) { mul(m) }
+public inline operator fun Vector4d.timesAssign(m: Matrix4x3dc) { mul(m) }
+public inline operator fun Vector4d.timesAssign(m: Matrix4fc) { mul(m) }
+public inline operator fun Vector4d.timesAssign(m: Matrix4x3fc) { mul(m) }
+public inline operator fun Vector4dc.div(v: Vector4dc): Vector4d = div(v, Vector4d())
+public inline operator fun Vector4dc.div(s: Double): Vector4d = div(s, Vector4d())
+public inline operator fun Vector4d.divAssign(v: Vector4dc) { div(v) }
+public inline operator fun Vector4d.divAssign(s: Double) { div(s) }
+public inline operator fun Vector4dc.unaryMinus(): Vector4d = negate(Vector4d())
+public inline infix fun Vector4dc.dot(v: Vector4dc): Double = dot(v)
+public inline infix fun Vector4dc.distance(v: Vector4dc): Double = distance(v)
+public inline infix fun Vector4dc.distanceSquared(v: Vector4dc): Double = distanceSquared(v)
+public inline infix fun Vector4dc.angleCos(v: Vector4dc): Double = angleCos(v)
+public inline infix fun Vector4dc.angle(v: Vector4dc): Double = angle(v)
+
+/* Buffer Operations */
+public inline fun ByteBuffer.getVector4d(): Vector4d = Vector4d(this)
+public inline fun ByteBuffer.getVector4d(index: Int): Vector4d = Vector4d(index, this)
+public inline fun ByteBuffer.getVector4d(v: Vector4d): Vector4d = v.set(this)
+public inline fun ByteBuffer.getVector4d(index: Int, v: Vector4d): Vector4d = v.set(index, this)
+public inline fun ByteBuffer.putVector4d(v: Vector4d): ByteBuffer = v.get(this)
+public inline fun ByteBuffer.putVector4d(index: Int, v: Vector4d): ByteBuffer = v.get(index, this)
+public inline fun DoubleBuffer.getVector4d(): Vector4d = Vector4d(this)
+public inline fun DoubleBuffer.getVector4d(index: Int): Vector4d = Vector4d(index, this)
+public inline fun DoubleBuffer.getVector4d(v: Vector4d): Vector4d = v.set(this)
+public inline fun DoubleBuffer.getVector4d(index: Int, v: Vector4d): Vector4d = v.set(index, this)
+public inline fun DoubleBuffer.putVector4d(v: Vector4d): DoubleBuffer = v.get(this)
+public inline fun DoubleBuffer.putVector4d(index: Int, v: Vector4d): DoubleBuffer = v.get(index, this)
+
+/* Angle operations */
+public fun Vector4dc.angleCosd(v: Vector4dc): Angled = angleCos(v).radians
+public fun Vector4dc.angled(v: Vector4dc): Angled = angle(v).radians
+public fun Vector4dc.rotateAxis(angle: Angled, aX: Double, aY: Double, aZ: Double, dest: Vector4d): Vector4d = rotateAxis(angle.radians, aX, aY, aZ, dest)
+public fun Vector4dc.rotateX(angle: Angled, dest: Vector4d): Vector4d = rotateX(angle.radians, dest)
+public fun Vector4dc.rotateY(angle: Angled, dest: Vector4d): Vector4d = rotateY(angle.radians, dest)
+public fun Vector4dc.rotateZ(angle: Angled, dest: Vector4d): Vector4d = rotateZ(angle.radians, dest)
+
+public fun Vector4d.rotateAxis(angle: Angled, aX: Double, aY: Double, aZ: Double): Vector4d = rotateAxis(angle.radians, aX, aY, aZ)
+public fun Vector4d.rotateX(angle: Angled): Vector4d = rotateX(angle.radians)
+public fun Vector4d.rotateY(angle: Angled): Vector4d = rotateY(angle.radians)
+public fun Vector4d.rotateZ(angle: Angled): Vector4d = rotateZ(angle.radians)
